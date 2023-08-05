@@ -1,23 +1,23 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 
 function QuerryFunction({ onClick, children }) {
     const [count, setCount] = useState(0);
-  const [text, setText]= useState('');
-  const [array, setArray] = useState([]);
+    const [text, setText] = useState('');
+    const [array, setArray] = useState([]);
+    let temp;
+    useEffect(
+        () => {
+            temp = array.map(
+                () => setCount(prev => prev + 1)
+            );
+            return temp;
 
-  useEffect(
-    () => {
-         const temp = array.map(
-          () => setCount(prev => prev + 1)
-          );
-          return temp;
-
-    }, [array]
-  )
+        }, [array]
+    )
 
     return (
         <div>
-            <input value={text} onChange={(e)=> setText(e.target.value)} />
+            <input value={text} onChange={(e) => setText(e.target.value)} />
             <button
                 onClick={() => setArray(prev => [...prev, temp])}
             >
